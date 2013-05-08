@@ -8,8 +8,11 @@ $(document).ready(function() {
 function scan() {
     window.plugins.barcodeScanner.scan(
         function(result) {
-            $.mobile.changePage( result.text );
-            playAudio('http://studentfolders.student.cascadia.edu/bit271/tomchristilaw/masterOfPuppets.mp3');
+            var page = result.text.split(' ')[0];
+            var song = result.text.split(' ')[1];
+
+            $.mobile.changePage( page );
+            playAudio( song );
 
 
         /*alert("Scanned Code: " + result.text 
