@@ -5,9 +5,6 @@ $(document).ready(function() {
     $('#stop').click(function() {
         stopAudio();
     });
-
-    document.addEventListener("resume", doResume, false);
-    document.addEventListener("pause", doPause, false);
 });
 
 
@@ -100,13 +97,4 @@ function onError(error) {
 // 
 function setAudioPosition(position) {
     document.getElementById('audio_position').innerHTML = position;
-}
-
-function doResume() {
-    playAudio();   
-}
-
-
-function doPause() {
-    pauseAudio();
 }
