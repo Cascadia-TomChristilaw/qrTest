@@ -8,7 +8,7 @@ $(document).ready(function() {
 var scan = function() {
     window.plugins.barcodeScanner.scan(
         function(result) {
-            window.location.href = result.text;
+            $.mobile.changePage( result.text );
 
 
         /*alert("Scanned Code: " + result.text 
