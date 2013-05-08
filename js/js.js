@@ -1,12 +1,20 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 	$("#scanButton").click(function() {
 		scan( function (result) { 
 			alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
 		});
 	});
 });
+*/
 
-// var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+$(document).ready(function() {
+	$("#scanButton").click(function() {
+		scan( function (result) { 
+			$('#home div[data-role="content"]').append("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
+		});
+	});
+});
+
 
 function scan(successFunction) {
     window.plugins.barcodeScanner.scan(function (result) {
