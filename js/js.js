@@ -8,9 +8,12 @@ $(document).ready(function() {
 var scan = function() {
     window.plugins.barcodeScanner.scan(
         function(result) {
-        alert("Scanned Code: " + result.text 
+            window.location.href = result.text;
+
+
+        /*alert("Scanned Code: " + result.text 
                 + ". Format: " + result.format
-                + ". Cancelled: " + result.cancelled);
+                + ". Cancelled: " + result.cancelled);*/
     }, function(error) {
         alert("Scan failed: " + error);
     });
