@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("#scanButton").click(function() {
+	$(".scanButton").click(function() {
 		scan();
 	});
     $('#stop').click(function() {
