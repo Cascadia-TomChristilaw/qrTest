@@ -11,6 +11,7 @@ $(document).ready(function() {
 function scan() {
     window.plugins.barcodeScanner.scan(
         function(result) {
+            stopAudio();
             var page = result.text.split(' ')[0];
             var song = result.text.split(' ')[1];
 
