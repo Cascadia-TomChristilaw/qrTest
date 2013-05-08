@@ -1,11 +1,26 @@
 $(document).ready(function() {
 	$("#scanButton").click(function() {
-		scanner.scan( function (result) { 
-			alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled);
-			 }, function (error) { 
-			 	alert("Scanning failed: " + error); 
+		scan( function (result) { 
+			alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
 		});
 	});
 });
 
-var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+// var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+
+function scan(successFunction) {
+    window.plugins.barcodeScanner.scan(function (result) {
+          if (!result.cancelled) {
+            // Successfully scanned a bar code
+            if (result.format == "CODE_128") {
+              loadCardData(result.text, successFunction);
+            } else {
+              $('#typeInPopup #hint').html("Sorry, invalid format");
+              $('#typeInPopup').popup('open', { transition: 'pop'});
+            }
+          }
+        }, function (error) {
+          alert("Scanning failed: " + error);
+        }
+    );
+}
