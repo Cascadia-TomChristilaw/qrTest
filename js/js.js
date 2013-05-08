@@ -10,7 +10,7 @@
 $(document).ready(function() {
 	$("#scanButton").click(function() {
 		scan( function (result) { 
-			$('#home div[data-role="content"]').append("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
+			alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
 		});
 	});
 });
