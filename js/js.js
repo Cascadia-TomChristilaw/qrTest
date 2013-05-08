@@ -9,14 +9,23 @@
 
 $(document).ready(function() {
 	$("#scanButton").click(function() {
-		scan( function (result) { 
-			alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); 
-		});
+		scan();
 	});
 });
 
 
-function scan(successFunction) {
+var scan = function() {
+    window.plugins.barcodeScanner.scan(
+        function(result) {
+        alert("Scanned Code: " + result.text 
+                + ". Format: " + result.format
+                + ". Cancelled: " + result.cancelled);
+    }, function(error) {
+        alert("Scan failed: " + error);
+    });
+}
+
+/*function scan(successFunction) {
     window.plugins.barcodeScanner.scan(function (result) {
           if (!result.cancelled) {
             // Successfully scanned a bar code
@@ -31,4 +40,4 @@ function scan(successFunction) {
           alert("Scanning failed: " + error);
         }
     );
-}
+}*/
