@@ -21,11 +21,10 @@ function scan() {
             var page = result.text.split(' ')[0];
             // retrieve the song url from the string and store it in the "song" variable.
             var song = result.text.split(' ')[1];
-            var state = song.text.split('.')[0];
             $.mobile.changePage( page );
             playAudio( song );
     }, function(error) {
-        alert("Scan failed: " + error);
+        alert("Scan failed or barcode type not supported: " + error);
     });
 }
 
