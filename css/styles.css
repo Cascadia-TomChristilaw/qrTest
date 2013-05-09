@@ -10,3 +10,7 @@
 	text-align: center;
 	padding-top: 85px;
 }
+
+#second div[data-role="content"]>h1 {
+	text-align: center;
+}
