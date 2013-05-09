@@ -21,7 +21,8 @@ function scan() {
             var page = result.text.split(' ')[0];
             // retrieve the song url from the string and store it in the "song" variable.
             var song = result.text.split(' ')[1];
-            $('#second div[data-role="content"]>h1').append(song.text.split('.')[0]);
+            var state = song.text.split('.')[0];
+            $('#second div[data-role="content"]>h1').append( state );
             $.mobile.changePage( page );
             playAudio( song );
     }, function(error) {
