@@ -20,12 +20,15 @@ function scan() {
             // retrieve the navigation destination from the string and store it in the "page" variable.
             var page = result.text.split(' ')[0];
             // retrieve the song url from the string and store it in the "song" variable.
-            var song = result.text.split(' ')[1];            
+            var song = result.text.split(' ')[1];   
+            // Navigate to the page specified by first part of string.         
             $.mobile.changePage( page );
+            // Add the state name parsed from song url to page.
             $('#second div[data-role="content"]>h1').append(song.substring(song.lastIndexOf("/") + 1, song.lastIndexOf(".")));
+            // Automatically start playback of the state song.
             playAudio( song );
     }, function(error) {
-        alert("Scan failed or barcode type not supported: " + error);
+        alert("Scan failed: " + error);
     });
 }
 
@@ -77,6 +80,7 @@ function pauseAudio() {
 function stopAudio() {
     if (my_media) {
         my_media.stop();
+        // release the device resources upon stopping playback
         my_media.release();
     }
     clearInterval(mediaTimer);
