@@ -1,29 +1,31 @@
 $(document).ready(function() {
+      // Call the barcode scanner's scan() function when the scan button is clicked  
 	$(".scanButton").click(function() {
 		scan();
 	});
+      // Call the Media.stopAudio() function when the stop button is clicked  
     $('#stop').click(function() {
         stopAudio();
     });
 });
 
-
+ /* The scan() function.  Currently the scan function is set up to parse a specifically formatted
+    string returned from the QR code. The function assumes that the string contains the destination
+    url first and then the song url separated by a space. */
 function scan() {
     window.plugins.barcodeScanner.scan(
         function(result) {
+            // Stop the currently playing song if one is playing
             stopAudio();
+            // retrieve the navigation destination from the string and store it in the "page" variable.
             var page = result.text.split(' ')[0];
+            // retrieve the song url from the string and store it in the "song" variable.
             var song = result.text.split(' ')[1];
-
+            $('#second div[data-role="content"]>h1').append(song.text.split('.')[0]);
             $.mobile.changePage( page );
             playAudio( song );
-
-
-        /*alert("Scanned Code: " + result.text 
-                + ". Format: " + result.format
-                + ". Cancelled: " + result.cancelled);*/
     }, function(error) {
-        alert("Scan failed: " + error);
+        alert("Scan failed or barcode type not supported: " + error);
     });
 }
 
