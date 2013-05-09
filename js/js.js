@@ -24,7 +24,7 @@ function scan() {
             // Navigate to the page specified by first part of string.         
             $.mobile.changePage( page );
             // Add the state name parsed from song url to page.
-            $('#second div[data-role="content"]>h1').append(song.substring(song.lastIndexOf("/") + 1, song.lastIndexOf(".")));
+            $('#second div[data-role="content"]>h1').html(song.substring(song.lastIndexOf("/") + 1, song.lastIndexOf(".")));
             // Automatically start playback of the state song.
             playAudio( song );
     }, function(error) {
