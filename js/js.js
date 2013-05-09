@@ -20,8 +20,9 @@ function scan() {
             // retrieve the navigation destination from the string and store it in the "page" variable.
             var page = result.text.split(' ')[0];
             // retrieve the song url from the string and store it in the "song" variable.
-            var song = result.text.split(' ')[1];
+            var song = result.text.split(' ')[1];            
             $.mobile.changePage( page );
+            $('#second div[data-role="content"]>h1').append(song.split('.')[0]);
             playAudio( song );
     }, function(error) {
         alert("Scan failed or barcode type not supported: " + error);
