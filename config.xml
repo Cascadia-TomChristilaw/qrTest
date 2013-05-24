@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.statesongs.ccc"
+        id        = "com.test.qr"
         versionCode="1" 
         version   = "1.0.0">
 
@@ -12,14 +12,14 @@
 
     <!-- <icon src="images/logo.png" /> -->
     
-    <name>State Tuned</name>
+    <name>QR Test</name>
 
     <description>
-        Mapping State Songs project for Cascadia Community College.
+        Simply testing the deployment of the QR scanner on the mobile device using Phonegap Build.
     </description>
 
     <author href="https://tom.christilaw.com" email="tom@christilaw.com">
-        Tom Christilaw, Janet Rasque, Helen Tsang, Riki Scott
+        Tom Christilaw 
     </author>
 
 </widget>
