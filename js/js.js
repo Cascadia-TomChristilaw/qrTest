@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
       // Call the barcode scanner's scan() function when the scan button is clicked  
 	$(".scanButton").click(function() {
 		scan();
@@ -8,7 +8,7 @@ $(document).ready(function() {
         stopAudio();
     });
 });
-
+var state;
  /* The scan() function.  Currently the scan function is set up to parse a specifically formatted
     string returned from the QR code. The function assumes that the string contains the destination
     url first and then the song url separated by a space. */
@@ -16,15 +16,11 @@ function scan() {
     window.plugins.barcodeScanner.scan(
         function(result) {
             // Stop the currently playing song if one is playing
-            stopAudio();
-            // retrieve the navigation destination from the string and store it in the "page" variable.
-            var page = result.text.split(' ')[0];
+            stopAudio();           
             // retrieve the song url from the string and store it in the "song" variable.
-            var song = result.text.split(' ')[1];   
+            state = result.text;   
             // Navigate to the page specified by first part of string.         
-            $.mobile.changePage( page );
-            // Add the state name parsed from song url to page.
-            $('#second div[data-role="content"]>h1').html(song.substring(song.lastIndexOf("/") + 1, song.lastIndexOf(".")));
+            $.mobile.changePage( '#second' );            
             // Automatically start playback of the state song.
             playAudio( song );
     }, function(error) {
@@ -34,8 +30,6 @@ function scan() {
 
 // Audio player
 //
-var my_media = null;
-var mediaTimer = null;
 
 // Play audio
 //
