@@ -7,6 +7,8 @@ $(document).ready(function () {
     $('#stop').click(function() {
         stopAudio();
     });
+
+    $.refreshPage();
 });
 var state;
  /* The scan() function.  Currently the scan function is set up to parse a specifically formatted
@@ -26,6 +28,18 @@ function scan() {
     }, function(error) {
         alert("Scan failed: " + error);
     });
+}
+
+function refreshPage() {
+  $.mobile.changePage(
+    window.location.href,
+    {
+      allowSamePageTransition : true,
+      transition              : 'none',
+      showLoadMsg             : false,
+      reloadPage              : true
+    }
+  );
 }
 
 // Audio player
